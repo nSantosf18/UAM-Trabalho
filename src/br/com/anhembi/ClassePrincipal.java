@@ -1,18 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.anhembi;
 
 /**
  *
- * @author Nicolas
+ * @authors Leonardo, Rodrigo, Nicolas, Lucas e Gabriel
  */
 public class ClassePrincipal {
-    
     public static void main(String[] args)
     {
-        /* Olá grupo essa é a nossa classe principal do trabalho */
+        // Olá grupo essa é a nossa classe principal do trabalho 
+        // Iremos usar métodos e vetores 
+        
     }
 }
