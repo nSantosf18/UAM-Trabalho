@@ -11,4 +11,8 @@ package br.com.anhembi;
  */
 public class ClassePrincipal {
     
+    public static void main(String[] args)
+    {
+        /* Olá grupo essa é a nossa classe principal do trabalho */
+    }
 }
