@@ -15,13 +15,13 @@ public class ClassePrincipal {
     // Exemplo 2 dar o print no menu de forma mais eficiente. Chamem o método e testem!
     static void print_menu()
     {
-        System.out.println("================================");
+        System.out.println("__________________________________________");
         System.out.println("1 - Cadastrar produto\n" 
                           +"2 - Listar produtos\n"
                           +"3 - Vender produto\n"
                           +"4 - Relatório de vendas\n"
                           +"5 - Sair");
-        System.out.println("================================");
+        System.out.println("__________________________________________");
     }
     
     public static void main(String[] args)
