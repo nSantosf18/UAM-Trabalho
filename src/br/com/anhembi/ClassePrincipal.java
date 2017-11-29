@@ -9,11 +9,14 @@ public class ClassePrincipal {
     
     // Métodos 
     static void bannerSubmarinoYellow() {
-        System.out.println("@Autores:\nNicolas dos Santos Ferreira RA: 21044239\n" 
-                           +"Leonardo de Sá              RA: ? \n"
-                           +"Lucas Grosso                RA: 21053184 \n"
-                           +"Diogo Torres Savone         RA: 20530679 \n" 
-                           +"Gabriel Vitor               RA: 21050781");
+        System.out.println("------------------ALUNOS--------------------\n" 
+                           +"--------------------------------------------\n" 
+                           +"|Nicolas dos Santos Ferreira | RA: 21044239|\n" 
+                           +"|Leonardo de Sá Santos       | RA: 20936105| \n"
+                           +"|Lucas Grosso                | RA: 21053184| \n"
+                           +"|Rodrigo Torres Savone       | RA: 20530679| \n" 
+                           +"|Gabriel Vitor               | RA: 21050781|\n" 
+                           +"--------------------------------------------\n" );
         System.out.println(" ▛=============================================================================================▜");
         System.out.println("▍ ---------------------------------===== SUBMARINO YELLOW =====--------------------------------  ▍ ");
         System.out.println(" ▙=============================================================================================▟ \n");
@@ -27,22 +30,21 @@ public class ClassePrincipal {
                 + "5 - Sair");
         System.out.println("__________________________________________");
     }
-    static void listarProdutosCadastrados(String nomes[], int codigos[], double valores[]) {
+    static void listarProdutosCadastrados(String nomeProduto[], int codigos[], double valores[]) {
         // Verifcar primeiramente se o vetor está preechido corretamente
         if(codigos[0] != 0)
         {
-            System.out.println("==== Listar Produtos ====");
+            System.out.println("==== Listar Produtos ====\n");
             for (int i = 0; i < 10; i++) {
                 if(codigos[i] != 0) {
                     System.out.println("=== PRODUTO " + (i+1) +  " ===\n"
-                            + "NOME: " + nomes[i] + '\n'
+                            + "NOME: " + nomeProduto[i] + '\n'
                             + "CÓDIGO: " + codigos[i] + '\n'
                             + "VALOR: R$ " + valores[i] + '\n');
-                 
                 }
             }
         } else {
-            System.out.println("Não há produtos cadastrados!");
+            System.out.println("ERRO! -> Não há produtos cadastrados!");
         }
     }
     static void venderProdutosListados(int codigos[], int vendas[], int codProcurado, int iterador) {
@@ -67,20 +69,20 @@ public class ClassePrincipal {
              *  Verifica também o iterador caso tente ultrapassar o limete dele(100 vendas) ele emite um erro.
                  */
                 if (codAchado == true) {
-                    System.out.println("Compra efetivada com sucesso!");
+                    System.out.println("---> Compra efetivada com sucesso!");
                     vendas[iterador] = codProcurado;
                 } else {
-                    System.out.println("Código não encontrado!");
+                    System.out.println("ERRO! -> Código não encontrado!");
                 }
             } else {
-                System.out.println("Limite de vendas atingido!");
+                System.out.println("ERRO! -> Limite de vendas atingido!");
             }
             
         } else {
-            System.out.println("Código procurado inválido!");
+            System.out.println("ERRO! -> Código procurado inválido!");
         }
     }
-    static void relatorioDosProdutos(String nomes[], int codigos[], int vendas[], double valores[]) {
+    static void relatorioDosProdutos(String nomeProduto[], int codigos[], int vendas[], double valores[]) {
 
         int nDeVendas = 0;
         double valorTotalProduto = 0;
@@ -88,7 +90,7 @@ public class ClassePrincipal {
         
         // Verifica se o índice 0 do vetor codigos[] é maior que zero.
         if (codigos[0] >= 1) {
-            System.out.println("==== Relatório de Vendas ====");
+            System.out.println("==== Relatório de Vendas ====\n");
             for (int i = 0; i < 10; i++) {
                 
                 nDeVendas = 0;
@@ -106,17 +108,17 @@ public class ClassePrincipal {
 
                 if (codigos[i] != 0) {
                     System.out.println("--->CÓDIGO: " + codigos[i]
-                            + "\nPRODUTO: " + nomes[i]
+                            + "\nPRODUTO: " + nomeProduto[i]
                             + "\nNº DE VENDAS: " + nDeVendas
                             + "\nPREÇO: " + valores[i]
                             + "\nTOTAL: " + valorTotalProduto + "\n");
                 }
             }
             System.out.println("=========================================");
-            System.out.println("TOTAL GERAL DAS VENDAS: " + somaTotal);
+            System.out.println("TOTAL GERAL DAS VENDAS: R$ " + somaTotal);
             System.out.println("=========================================");
         } else {
-            System.out.println("Não há produtos cadastrados!");
+            System.out.println("ERRO! -> Não há produtos cadastrados!");
         }
     }
 
@@ -124,22 +126,22 @@ public class ClassePrincipal {
         Scanner scan = new Scanner(System.in);
 
         // Variáveis
-        char opcao        = 0;
-        int itrCadastro   = 0;
-        int itrVender     = 0;
-        int codProcurado  = 0;
-        boolean verifica  = true;
+        char opcao        = 0;      // Opção digitada pelo usuário
+        int itrCadastro   = 0;      // Contador para o método de cadastro
+        int itrVender     = 0;      // Contador para o método de vendas
+        int codProcurado  = 0;      // Código procura pelo usário
+        boolean verifica  = true;   
 
-        String nomes[]   = new String[10];
-        int codigos[]    = new int[10];
-        int vendas[]     = new int[100];
-        double valores[] = new double[10];
+        String nomeProduto[] = new String[10];
+        int codigos[]        = new int[10];
+        int vendas[]         = new int[100];
+        double valores[]     = new double[10];
  
 
         // Banner do programa
         bannerSubmarinoYellow();
         
-        // Verifica se pode continuar no while-loop se for FALSE ele sái do loop
+        // Verifica se pode continuar no while-loop se for FALSE(opção 5) ele sái do loop
         while (verifica){
 
             menuSubmarinoYellow();
@@ -160,32 +162,32 @@ public class ClassePrincipal {
                             System.out.println("=== Cadastrar produto ===\n");
                             System.out.println("=== PRODUTO " + (itrCadastro + 1) + " === ");
                             System.out.print("Inserir nome: ");
-                            nomes[itrCadastro] = scan.next();
+                            nomeProduto[itrCadastro] = scan.next();
                             
-                            if (!nomes[itrCadastro].equals(" ")) {
+                            if (!nomeProduto[itrCadastro].equals("")) {
                                 System.out.print("Inserir um valor: ");
                                 valores[itrCadastro] = scan.nextDouble();
 
                                 if (valores[itrCadastro] >= 0.01) {
                                     codigos[itrCadastro] = (itrCadastro + 1);
                                     itrCadastro++;
-                                    System.out.println("Cadastro realizado com sucesso!.");
+                                    System.out.println("\n---> Cadastro realizado com sucesso!.");
                                 } else {
-                                    System.out.println("Erro! Digite um valor maior que 0!");
+                                    System.out.println("ERRO! -> Digite um valor maior que 0!");
                                 }
                             }
                         }
                         break;
 
                     case '2':
-                        listarProdutosCadastrados(nomes, codigos, valores);
+                        listarProdutosCadastrados(nomeProduto, codigos, valores);
                         break;
 
                     case '3':
                         if (codigos[0] != 1) {
-                            System.out.println("Não há produtos cadastrados!");
+                            System.out.println("ERRO! -> Não há produtos cadastrados!");
                         } else {
-                            listarProdutosCadastrados(nomes, codigos, valores);
+                            listarProdutosCadastrados(nomeProduto, codigos, valores);
                             
                             System.out.print("Digite o codigo do produto para compra-lo: ");
                             codProcurado = scan.nextInt();
@@ -196,12 +198,12 @@ public class ClassePrincipal {
                         break;
 
                     case '4':
-                        relatorioDosProdutos(nomes, codigos, vendas, valores);
+                        relatorioDosProdutos(nomeProduto, codigos, vendas, valores);
                         break;
 
                     case '5':
                         verifica = false;
-                        System.out.println("Obrigado por usar nosso sistema!");
+                        System.out.println("\n---=== Obrigado por usar o nosso aplicativo! ===---\n");
                         break;
                         
                     default:
@@ -211,7 +213,6 @@ public class ClassePrincipal {
             } else {
                 System.out.println("Digite uma opção válida!");
             }
-          
         }
     }
 }
